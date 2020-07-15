@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search in Pdf</title>
+</head>
+
+<body>
+
+    <form>
+        <div>
+            <label>Write the string you want to search</label>
+            <input type="text" name="" id="item">
+        </div>
+        <button type="submit"> Click Here</button>
+    </form>
+
+    <script>
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+        const form = document.querySelector('form')
+        form.addEventListener('submit', submitform)
+
+        function submitform(e) {
+            e.preventDefault();
+            const item = document.querySelector('#item').value;
+            ipcRenderer.send('item:add', item);
+        }
+
+
+
+    </script>
+</body>
+
+</html>
